@@ -65,7 +65,7 @@
     if( !$result ){
     echo mysqli_error($link);
                }
-               echo "$nlab";
+                              ?> <h1> <?php echo "$nlab";?> </h1> <?php
 ?>
     <br>      
         
