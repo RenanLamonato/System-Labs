@@ -69,7 +69,7 @@ document.addEventListener('DOMContentLoaded', function() {
         events: function(info, successCallback, failureCallback){
             $.ajax({
                 type: "GET",
-                url: 'http://localhost/labs/Solicitacao/eventos/'+$('#lab_id').val(),
+                url: 'http://localhost:8080/System-Labs/Solicitacao/eventos/'+$('#lab_id').val(),
                 contentType: "application/json; charset=utf-8",
                 dataType: "json",
                 success: function(eventos){
