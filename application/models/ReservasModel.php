@@ -56,4 +56,22 @@ class ReservasModel extends CI_Model {
         $query = $this->db->get();
         return $query->result_object();
     }
+    public function buscarTodasReserva(){
+          $this->db->select('*');
+        $this->db->from(self::DB_TABLE);
+         $query = $this->db->get();
+        return $query->result_object();
+    }
+    
+    public function atualizarReservaPorId($res_situacao,$idRes){
+        $this->db->set('res_situacao',$res_situacao);
+        $this->db->where('res_id', $idRes);
+        $this->db->update('reservas');
+
+        
 }
+
+        
+    
+}
+
