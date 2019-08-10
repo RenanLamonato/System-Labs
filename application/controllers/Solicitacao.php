@@ -32,6 +32,51 @@ class Solicitacao extends CI_Controller {
             $this->load->view('telaReserva', $dados);
         }
     }
+    
+    
+    public function pgAdmin(){
+      //  $this->load->model("adminModel");
+            $this->load->model("ReservasModel");
+         $lista = $this->ReservasModel->buscarTodasReserva();
+         $dados = array("reservas" => $lista);
+                     $this->load->view('controleAdministrador',$dados);
+
+    }
+
+    
+   public function alterarEstado() {
+       if($_POST){
+            $ESTADO = $_POST['confRes'];
+            $idRes = $_POST['idaux'];
+                if($ESTADO== 50){
+                    $resf ="análise"; 
+                }
+                if($ESTADO>= 90){
+                    $resf ="deferida"; 
+                }if($ESTADO<= 40){
+                    $resf ="indeferida"; 
+                }
+            $this->load->model("ReservasModel");
+            $this->ReservasModel->atualizarReservaPorId($resf,$idRes); 
+              
+       }
+      
+      /*  $resf = "agua";
+       $val = $_POST['custId'];
+      
+           
+            $this->load->model("ReservasModel");
+         $lista = $this->ReservasModel->atualizarReservaPorId();
+         
+
+         $dados = array("reservas" => $lista);
+                     $this->load->view('controleAdministrador',$dados);
+    */
+
+        
+
+    }
+    
 
     private function validarFormulario(){
         $regras = array(
