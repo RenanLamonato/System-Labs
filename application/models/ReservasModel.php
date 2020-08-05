@@ -70,8 +70,14 @@ class ReservasModel extends CI_Model {
 
         
 }
-
-        
+//ideia de deletar reserva cancelada
+    public function deletarReservaPorId($idRes){
+        $this->db->where('res_id',$idRes);
+        $this->db->delete(self::DB_TABLE);
+        $this->db->from(self::DB_TABLE);
     
+    }
+  //  "DELETE FROM `reservas` WHERE `reservas`.`res_id` = 5"?
 }
+
 
