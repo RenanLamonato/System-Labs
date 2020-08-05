@@ -62,14 +62,16 @@ echo("</pre>");
       <td><?= $re->res_horai ?></td>
       <td><?= $re->res_horaf ?></td>
       <td><?= $re->res_situacao ?></td>
-      <td><button type="button" id ="<?= $re->res_id ?>" class="btn btn-primary" data-toggle="modal" onclick="document.getElementById('idaux').value = this.id;" data-target="#escolha">Em Aguardo </button></td>
+      <td><button type="button" id ="<?= $re->res_id ?>" value="<?= $re->res_id ?>" class="btn btn-primary" data-toggle="modal" onclick="document.getElementById('idaux').value = this.id;" data-target="#escolha">Editar Estado </button></td>
+      <td><button type="button" id ="<?= $re->res_id ?>" value="<?= $re->res_id ?>" class="btn btn-primary" data-toggle="modal" onclick="document.getElementById('idaux').value = this.id;" data-target="#delete">deletar Reserva </button></td>
+
     </tr>
     <?php endforeach ?>
 
       </tbody>
 </table>  
-
 <!-- Modal -->
+            <form method="POST" action="<?=base_url('solicitacao/alterarEstado')?>">
 <div class="modal fade" id="escolha" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
   <div class="modal-dialog" role="document">
     <div class="modal-content">
@@ -82,18 +84,17 @@ echo("</pre>");
      
         <div class="row">
             <div class="col-12"><center>
-     <form id="formGrupo" method="POST" action="<?=base_url('solicitacao/alterarEstado')?>">      
-      
+  
 <div class="slidecontainer">
           Não <input type="range" min="0" max="100" value="50" step="50" class="slider" id="confRes" name="confRes">Sim
-          <input type="hidden" id="idaux" nome="idaux" value="0">
+       <!--   <input id="idaux" nome="idaux" value="0">-->
+          <input type="hidden" name="idaux" id="idaux" value="tes">
 
 </div>
                     <div class="modal-footer">
         <div class="row">
             <div class="col">   
-                <button id="tconfres" type="button" class="btn btn-primary" data-dismiss="modal">Confirmar</button>
-               <!-- data-url="<?=base_url("solicitacao/alterarEstado")?>" type="button"-->
+                    <input type="submit" name="submit" class="btn btn-success" value="Salvar">
             </div>
         </div>
     </div>
@@ -107,8 +108,38 @@ echo("</pre>");
   </div>
 </div>
      <!-- fim Modal -->   
-        
-
+           </form>
+<!-- Modal deletar -->
+            <form method="POST" action="<?=base_url('solicitacao/deletarReserva')?>">
+<div class="modal fade" id="delete" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLabel">Deletar</h5>        
+      </div>
+      <div class="modal-body">
+          <div class="row">
+            <div class="col-12"><center>
+<div class="slidecontainer">
+ <!--         <input id="idaux" nome="idaux" value="0">-->
+          Digite o valor do ID da reserva a ser deletada(coluna #):
+          <input type="text" name="idaux" id="idaux" value="0">
+</div>
+                    <div class="modal-footer">
+        <div class="row">
+            <div class="col">   
+                    <input type="submit" name="submit" class="btn btn-success" value="Deletar">
+            </div>
+        </div>
+    </div>
+            </center></div>
+        </div>
+     </div>
+    </div>
+  </div>
+</div>
+     <!-- fim Modal -->   
+           </form>
         </div>
   </div>
 </div>

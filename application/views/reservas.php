@@ -46,6 +46,8 @@ defined('BASEPATH') OR exit('No direct script access allowed');
                     <label for='drop-remove'>remove after drop</label>
                 </p-->
             </div>
+            
+            <a id="id" class="btn btn-secondary" href="<?=base_url("solicitacao/pgAdmin")?>">adm</a>
         
             <div id="calendar"></div>
             
